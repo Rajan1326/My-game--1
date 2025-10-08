@@ -163,3 +163,18 @@ document.getElementById("btnStart").onclick=startGame;
 document.getElementById("btnRestart").onclick=startGame;
 document.getElementById("ovBtn").onclick=startGame;
 document.getElementById("btnPause").onclick=()=>running=!running;
+// Keyboard controls
+let keys = {};
+document.addEventListener("keydown", e => keys[e.code] = true);
+document.addEventListener("keyup", e => keys[e.code] = false);
+
+function updatePlayer() {
+if (keys["ArrowLeft"]) player.x -= 5;
+if (keys["ArrowRight"]) player.x += 5;
+if (keys["ArrowUp"]) player.y -= 5; // move forward
+if (keys["ArrowDown"]) player.y += 5; // move backward
+
+// keep inside canvas
+player.x = Math.max(0, Math.min(canvas.width - player.w, player.x));
+player.y = Math.max(0, Math.min(canvas.height - player.h, player.y));
+}
