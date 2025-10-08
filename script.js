@@ -178,3 +178,22 @@ if (keys["ArrowDown"]) player.y += 5; // move backward
 player.x = Math.max(0, Math.min(canvas.width - player.w, player.x));
 player.y = Math.max(0, Math.min(canvas.height - player.h, player.y));
 }
+// Load sprites
+const playerImg = document.getElementById("playerSprite");
+const enemyImg = document.getElementById("enemySprite");
+const bulletImg = document.getElementById("bulletSprite");
+
+// Player draw
+player.draw = function() {
+ctx.drawImage(playerImg, this.x, this.y, this.w, this.h);
+};
+
+// Enemy draw
+enemy.draw = function() {
+ctx.drawImage(enemyImg, this.x, this.y, this.w, this.h);
+};
+
+// Bullet draw
+bullet.draw = function() {
+ctx.drawImage(bulletImg, this.x, this.y, this.w, this.h);
+};
